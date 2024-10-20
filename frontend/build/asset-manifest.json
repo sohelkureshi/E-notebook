@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd34b080.css",
+    "main.js": "/static/js/main.c259f866.js",
+    "static/media/jess-bailey-K47Tk9IEQPQ-unsplash.jpg": "/static/media/jess-bailey-K47Tk9IEQPQ-unsplash.10e0d2384b09f5601db8.jpg",
+    "index.html": "/index.html",
+    "main.bd34b080.css.map": "/static/css/main.bd34b080.css.map",
+    "main.c259f866.js.map": "/static/js/main.c259f866.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd34b080.css",
+    "static/js/main.c259f866.js"
+  ]
+}

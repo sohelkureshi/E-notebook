@@ -1,0 +1,106 @@
+/* Base Navbar Styling */
+.nav-link.active {/* Highlight the active page */
+    font-size: 1.2rem; /* Make the active link larger */
+    color: #ffc107; /* Highlight active link with gold color */
+    font-weight: bold;
+    border-bottom: 2px solid #ffc107; /* Add a bottom border to active link */
+  }
+  
+.navbar {
+    background-color: #322d3d; /* Dark background for the navbar */
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 1.8rem;
+    color: #ffc107; /* Light text for the brand */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar .navbar-brand:hover {
+    color: #07ff2c; /* Highlight on hover */
+  }
+  
+  /* Links Styling */
+  .navbar .nav-link {
+    color: #adb5bd; /* Light gray links */
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .navbar .nav-link.active, .navbar .nav-link:hover {
+    color: #ffc107; /* Gold color for hover and active links */
+    border-bottom: 2px solid #ffc107; /* Highlight active link */
+  }
+  
+  /* Source Code Link */
+  .navbar .nav-link[href^="https://"] {
+    font-weight: bold;
+    color: #f8f9fa;
+  }
+  
+  .navbar .nav-link[href^="https://"]:hover {
+    color: #17a2b8; /* Cyan hover effect for external link */
+    text-decoration: underline;
+  }
+  
+  /* Buttons (Login/Signup/Logout) */
+  .navbar .btn-primary {
+    background-color: #ffc107; /* Gold button background */
+    color: #343a40; /* Dark text for better contrast */
+    border: none;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .navbar .btn-primary:hover {
+    background-color: #ffca2c; /* Slightly brighter on hover */
+    color: #212529; /* Darker text on hover */
+  }
+  
+  /* Navbar Toggler (for Mobile) */
+  .navbar-toggler {
+    border: 1px solid #ffc107;
+    padding: 0.25rem 0.75rem;
+    color: #ffc107;
+  }
+  
+  .navbar-toggler:hover {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffc107;
+  }
+  
+  /* Mobile Menu */
+  @media (max-width: 768px) {
+    .navbar .nav-link {
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  
+    .navbar .btn-primary {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+  }
+  
+  /* Transition Effects */
+  .navbar .d-flex {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+  

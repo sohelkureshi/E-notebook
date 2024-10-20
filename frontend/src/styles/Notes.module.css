@@ -1,0 +1,70 @@
+/* Notes.module.css */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .welcome {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: #343a40;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 1.5rem;
+  }
+  
+  .modal-header {
+    background-color: #007bff;
+    color: white;
+    border-bottom: none;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .btn-close {
+    color: white;
+  }
+  
+  .modal-body input {
+    margin-bottom: 1rem;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .notes-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: #343a40;
+  }
+  
+  .no-notes {
+    font-size: 1.25rem;
+    color: #555;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  

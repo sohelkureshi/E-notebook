@@ -1,0 +1,107 @@
+/* Container styles */
+#specific-page.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Heading styles */
+  #specific-page.container h1 {
+    font-size: 2.5rem;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  #specific-page.container h4 {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Paragraph styles */
+  #specific-page.container p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Highlight strong text */
+  #specific-page.container strong {
+    color: #343a40;
+    font-weight: bold;
+  }
+  
+  /* Key Features and Why Choose eNotebook */
+  #specific-page.container ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  #specific-page.container ul li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  #specific-page.container ul li::before {
+    content: "✔"; /* Checkmark icon */
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-right: 0.75rem;
+  }
+  
+  /* Button styles for the call to action */
+  #specific-page.container .btn-get-started {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+  
+  #specific-page.container .btn-get-started:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive design for mobile */
+  @media (max-width: 768px) {
+    #specific-page.container {
+      padding: 1rem;
+    }
+  
+    #specific-page.container h1 {
+      font-size: 2rem;
+    }
+  
+    #specific-page.container h4 {
+      font-size: 1.5rem;
+    }
+  
+    #specific-page.container p,
+    #specific-page.container ul li {
+      font-size: 1rem;
+    }
+  
+    #specific-page.container .btn-get-started {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+  
