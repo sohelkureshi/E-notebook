@@ -71,13 +71,14 @@ const checkBackendStatus = async () => {
       }
     });
     const json = await response.json();
-    // console.log(json);
-    if (json.status) {
+    console.log('Backend response:', json); // Log the full response to debug
+    if (json.status === true) { // Ensure 'true' is strictly checked
       setBackendStatus('Backend is live: ' + json.message);
     } else {
       setBackendStatus('Backend is not running');
     }
   } catch (error) {
+    console.error('Error:', error);
     setBackendStatus('Backend is not running');
   }
 };
@@ -85,6 +86,7 @@ const checkBackendStatus = async () => {
 useEffect(() => {
   checkBackendStatus();
 }, []);
+
 
 
 
