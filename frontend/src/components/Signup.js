@@ -20,7 +20,7 @@ const handleSubmit = async (e) => {
     
     //const host = process.env.REACT_APP_BACKEND_HOSTING_DOMAIN;
     //const url = `${host}/api/auth/createuser`;
-    const url = "http://localhost:5001/api/auth/createuser";
+    const url = "https://e-notebook-fu9z.onrender.com/api/auth/createuser";
     try {
         const response = await fetch(url, {
             method: 'POST',

@@ -62,7 +62,7 @@ function App() {
 const [backendStatus, setBackendStatus] = useState('Checking...');
 
 const checkBackendStatus = async () => {
-  const url = 'http://localhost:5001'; // Update this to your backend URL
+  const url = 'https://e-notebook-fu9z.onrender.com'; // Update this to your backend URL
   try {
     const response = await fetch(url, {
       method: 'GET',
