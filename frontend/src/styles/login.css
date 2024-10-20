@@ -89,7 +89,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('C:/coding/do changes/e-notebook/frontend/src/images/jess-bailey-K47Tk9IEQPQ-unsplash.jpg'); /* Correct file path */
+    background-image: url('../images/jess-bailey-K47Tk9IEQPQ-unsplash.jpg'); /* Correct file path */
     background-size: 100% 100%; /* Make the background image cover the entire container */
     background-position: center;
     z-index: -1; /* Place the image behind the content */
