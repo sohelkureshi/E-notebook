@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/login.css'; // if Login.css is inside the styles folder one level up
-
+import '../styles/login.css';
+import Footer from './Footer';
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -34,37 +34,40 @@ const Login = (props) => {
     }
 
     return (
-        <div className="login-container">
-            <h2>Login to continue to iNotebook</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="email"
-                        name="email"
-                        value={credentials.email}
-                        onChange={onChange}
-                        aria-describedby="emailHelp"
-                    />
-                    <div id="emailHelp" className="form-text">
-                        We'll never share your email with anyone else.
+        <div className="login-page">
+            <div className="login-container">
+                <h2>Login to continue to iNotebook</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="email"
+                            name="email"
+                            value={credentials.email}
+                            onChange={onChange}
+                            aria-describedby="emailHelp"
+                        />
+                        <div id="emailHelp" className="form-text">
+                            We'll never share your email with anyone else.
+                        </div>
                     </div>
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        value={credentials.password}
-                        onChange={onChange}
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            value={credentials.password}
+                            onChange={onChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <Footer />
         </div>
     );
 }

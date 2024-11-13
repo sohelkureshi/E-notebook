@@ -59,33 +59,33 @@ function App() {
 
 
 
-const [backendStatus, setBackendStatus] = useState('Checking...');
+// const [backendStatus, setBackendStatus] = useState('Checking...');
 
-const checkBackendStatus = async () => {
-  const url = 'https://e-notebook-fu9z.onrender.com'; // Update this to your backend URL
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-    const json = await response.json();
-    console.log('Backend response:', json); // Log the full response to debug
-    if (json.status === true) { // Ensure 'true' is strictly checked
-      setBackendStatus('Backend is live: ' + json.message);
-    } else {
-      setBackendStatus('Backend is not running');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    setBackendStatus('Backend is not running');
-  }
-};
+// const checkBackendStatus = async () => {
+//   const url = 'https://e-notebook-fu9z.onrender.com'; // Update this to your backend URL
+//   try {
+//     const response = await fetch(url, {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       }
+//     });
+//     const json = await response.json();
+//     console.log('Backend response:', json); // Log the full response to debug
+//     if (json.status === true) { // Ensure 'true' is strictly checked
+//       setBackendStatus('Backend is live: ' + json.message);
+//     } else {
+//       setBackendStatus('Backend is not running');
+//     }
+//   } catch (error) {
+//     console.error('Error:', error);
+//     setBackendStatus('Backend is not running');
+//   }
+// };
 
-useEffect(() => {
-  checkBackendStatus();
-}, []);
+// useEffect(() => {
+//   checkBackendStatus();
+// }, []);
 
 
 
@@ -129,7 +129,7 @@ useEffect(() => {
               <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
             </Routes>{/* </Switch> */}
           </div>
-          <div className="container text-muted my-5"><div className="container">{backendStatus}</div></div>
+          {/* <div className="container text-muted my-5"><div className="container">{backendStatus}</div></div> */}
         </Router>
       </NoteState>
     </>

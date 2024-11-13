@@ -1,0 +1,26 @@
+.footer {
+    width: 100%; /* Ensure full width */
+    background-color: #322d3d; /* Dark background to match navbar */
+    color: #ffc107; /* Gold text color for consistency */
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+    position: fixed; /* Keep footer fixed at bottom */
+    bottom: 0; /* Align it to the bottom */
+    left: 0; /* Align to the left side of the viewport */
+}
+
+.footer p {
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.footer p:hover {
+    color: #07ff2c; /* Highlight on hover */
+}
+
+.login-page {
+    padding-bottom: 3rem; /* Space for footer so content doesn’t overlap */
+}
