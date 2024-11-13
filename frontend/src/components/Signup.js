@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/signup.css';
+// import '../styles/signup.css';
 import Footer from './Footer'; // Import the Footer component
 
 const Signup = (props) => {

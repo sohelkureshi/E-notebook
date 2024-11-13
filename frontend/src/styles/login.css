@@ -1,31 +1,20 @@
-/* Overall Page Styles */
-body, html {
-  height: 100%; /* Ensure the body and html take full screen height */
-  margin: 0;
-  overflow: hidden; /* Remove scroll bar */
-}
-
 /* Login Container Styles */
+
+
 .login-container {
   max-width: 400px;
-  width: 90%;
-  height: auto;
-  margin: auto; /* Center the form on the page */
+  margin: 50px auto; /* Center the form on the page */
   padding: 2rem;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center container both vertically and horizontally */
 }
 
 /* Title Styles */
 .login-container h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #faf7f7;
+  color: #333;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -87,12 +76,12 @@ body, html {
 /* Responsive Design */
 @media (max-width: 600px) {
   .login-container {
-      padding: 1.5rem;
-      width: 90%;
+    padding: 1.5rem;
+    width: 90%;
   }
 }
 
-/* Background Image */
+
 .login-container::before {
   content: '';
   position: absolute;
@@ -101,7 +90,7 @@ body, html {
   right: 0;
   bottom: 0;
   background-image: url('../images/jess-bailey-K47Tk9IEQPQ-unsplash.jpg'); /* Correct file path */
-  background-size: cover; /* Cover entire container */
+  background-size: 100% 100%; /* Make the background image cover the entire container */
   background-position: center;
   z-index: -1; /* Place the image behind the content */
 }
