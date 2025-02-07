@@ -24,7 +24,7 @@ const Signup = (props) => {
       return;
     }
 
-    const url = "http://localhost:5000/api/auth/createuser";
+    const url = "https://e-notebook-fu9z.onrender.com/api/auth/createuser";
     try {
       const response = await fetch(url, {
         method: 'POST',

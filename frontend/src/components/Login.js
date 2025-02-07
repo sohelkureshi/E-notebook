@@ -15,7 +15,7 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:5000/api/auth/login";
+    const url = "https://e-notebook-fu9z.onrender.com/api/auth/login";
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

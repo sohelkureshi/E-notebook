@@ -77,12 +77,19 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
+// CORS configuration for Render deployment
+const corsOptions = {
+    origin: "https://e-notebook-fu9z.onrender.com/",
+    credentials: true
+};
+
 connectToMongo();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+// Use CORS with custom options
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve static files from the frontend build folder (one level up from the backend folder)
@@ -100,3 +107,4 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
 });
+
