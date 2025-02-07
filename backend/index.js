@@ -72,15 +72,18 @@
 //   console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`)
 // })
 //------------------------------------
+// Load environment variables from .env file
+require('dotenv').config();
+
 const connectToMongo = require('./db');
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
-// CORS configuration for Render deployment
+// CORS configuration for Render deployment (or adjust for your needs)
 const corsOptions = {
-    origin: "https://e-notebook-fu9z.onrender.com/",
-    credentials: true
+  origin: process.env.CLIENT_URL || "https://e-notebook-fu9z.onrender.com/",
+  credentials: true
 };
 
 connectToMongo();
@@ -105,6 +108,7 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
+  console.log(`iNotebook backend listening on port ${port} at http://localhost:${port} in ${process.env.NODE_ENV} mode`);
 });
+
 
