@@ -1,106 +1,137 @@
-/* Base Navbar Styling */
-.nav-link.active {/* Highlight the active page */
-    font-size: 1.2rem; /* Make the active link larger */
-    color: #ffc107; /* Highlight active link with gold color */
-    font-weight: bold;
-    border-bottom: 2px solid #ffc107; /* Add a bottom border to active link */
-  }
-  
+/* Navbar container */
 .navbar {
-    background-color: #322d3d; /* Dark background for the navbar */
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Explicit height */
+  z-index: 1000;
+  background: linear-gradient(135deg, #3498db, #8e44ad);
+  padding: 0.25rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center; /* Vertical center content */
+}
+
+/* Navbar brand (logo/title) */
+.navbar-brand {
+  font-size: 1.5rem; /* Reduced font size for lower height */
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Brand icon */
+.brand-icon {
+  font-size: 1.7rem; /* Reduced size for lower height */
+  margin-right: 0.5rem;
+}
+
+/* Navigation links */
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem; /* Reduced font size for lower height */
+  padding: 0.3rem 1rem; /* Reduced vertical padding for lower height */
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff;
+}
+
+/* Source code link */
+.source-code {
+  display: flex;
+  align-items: center;
+}
+
+/* GitHub icon styles */
+.github-icon {
+  font-size: 1.2rem;
+  margin-right: 0.3rem;
+}
+
+.github-icon svg {
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+
+/* Authentication buttons container */
+.auth-buttons {
+  display: flex;
+}
+
+/* Button styles */
+.btn {
+  padding: 0.3rem 1.2rem; /* Reduced padding for lower height */
+  font-weight: 600;
+  border-radius: 20px; /* Slightly reduced for smaller appearance */
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #3498db;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.btn-logout {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 991px) {
+  .navbar-nav {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
   }
-  
-  .navbar .navbar-brand {
-    font-size: 1.8rem;
-    color: #ffc107; /* Light text for the brand */
-    transition: color 0.3s ease;
+
+  .auth-buttons {
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .navbar .navbar-brand:hover {
-    color: #07ff2c; /* Highlight on hover */
+
+  .btn {
+    margin: 0.5rem 0;
   }
-  
-  /* Links Styling */
-  .navbar .nav-link {
-    color: #adb5bd; /* Light gray links */
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .navbar .nav-link.active, .navbar .nav-link:hover {
-    color: #ffc107; /* Gold color for hover and active links */
-    border-bottom: 2px solid #ffc107; /* Highlight active link */
-  }
-  
-  /* Source Code Link */
-  .navbar .nav-link[href^="https://"] {
-    font-weight: bold;
-    color: #f8f9fa;
-  }
-  
-  .navbar .nav-link[href^="https://"]:hover {
-    color: #17a2b8; /* Cyan hover effect for external link */
-    text-decoration: underline;
-  }
-  
-  /* Buttons (Login/Signup/Logout) */
-  .navbar .btn-primary {
-    background-color: #ffc107; /* Gold button background */
-    color: #343a40; /* Dark text for better contrast */
-    border: none;
-    font-weight: bold;
-    padding: 0.5rem 1.5rem;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .navbar .btn-primary:hover {
-    background-color: #ffca2c; /* Slightly brighter on hover */
-    color: #212529; /* Darker text on hover */
-  }
-  
-  /* Navbar Toggler (for Mobile) */
-  .navbar-toggler {
-    border: 1px solid #ffc107;
-    padding: 0.25rem 0.75rem;
-    color: #ffc107;
-  }
-  
-  .navbar-toggler:hover {
-    background-color: #ffc107;
-    color: #343a40;
-  }
-  
-  .navbar-toggler-icon {
-    background-color: #ffc107;
-  }
-  
-  /* Mobile Menu */
-  @media (max-width: 768px) {
-    .navbar .nav-link {
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.2rem;
-    }
-  
-    .navbar .btn-primary {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-  }
-  
-  /* Transition Effects */
-  .navbar .d-flex {
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .btn-primary {
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .btn-primary:hover {
-    transform: scale(1.05);
-  }
-  
+}

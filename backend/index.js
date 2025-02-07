@@ -6,7 +6,7 @@
 // connectToMongo();
 
 // const app = express()
-// const port = process.env.PORT || 5001;
+// const port = process.env.PORT || 5000;
 
 // app.use(cors())
 // app.use(express.json()) // to use req.body
@@ -22,37 +22,81 @@
 // app.listen(port, () => {
 //   console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`)
 // })
-const path = require('path');
+//--------------------------
+// const connectToMongo = require('./db');
+// const express = require('express');
+// const cors = require('cors');
+// require('dotenv').config();
 
-const connectToMongo = require('./db');
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config();
+// connectToMongo();
 
-connectToMongo();
+// const app = express();
+// const port = process.env.PORT || 5000;
 
-const app = express();
-const port = 5001;
-
-
-app.use(cors());
-app.use(express.json()); // to use req.body
+// app.use(cors());
+// app.use(express.json()); // to use req.body
 
 // app.get('/', (req, res) => {
 //     res.json({ status: true, message: "iNotebook backend running successfully" });
 // });
 
-// available routes
+// // available routes
+// app.use('/api/auth', require('./routes/auth'));
+// app.use('/api/notes', require('./routes/notes'));
+
+// app.listen(port, () => {
+//     console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
+// });
+//---------------------------------------
+// const connectToMongo = require('./db');
+// const express = require('express');
+// const cors = require('cors');
+
+// connectToMongo();
+
+// const app = express()
+// const port = 5000
+
+// app.use(cors())
+// app.use(express.json()) // to use req.body
+
+// app.get('/', (req, res) => {
+//   res.json({ status: true, message: "iNotebook backend running successfully" })
+// })
+
+// // available routes
+// app.use('/api/auth', require('./routes/auth'))
+// app.use('/api/notes', require('./routes/notes'))
+
+// app.listen(port, () => {
+//   console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`)
+// })
+//------------------------------------
+const connectToMongo = require('./db');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+
+connectToMongo();
+
+const app = express();
+const port = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+
+// Serve static files from the frontend build folder (one level up from the backend folder)
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+// API routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
 
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-app.get('*', (_,res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend","build","index.html"));
-
-})
+// For any route not matching an API endpoint, serve the React app
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
+});
 
 app.listen(port, () => {
-    console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
+  console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
 });

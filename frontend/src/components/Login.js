@@ -1,75 +1,115 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/login.css';
-import Footer from './Footer';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState({ email: "", password: "" });
-    const navigate = useNavigate();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-    const onChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const url = "http://localhost:5000/api/auth/login";
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
+    });
+    const json = await response.json();
+
+    if (json.success) {
+      // Store token in sessionStorage so it won’t persist after closing the tab
+      sessionStorage.setItem('token', json.authToken);
+      // Navigate to the notes page (rendered by Home.js at route '/home')
+      navigate("/home");
+      props.showAlert("Logged in successfully", "success");
+    } else {
+      props.showAlert("Invalid Credentials", "danger");
     }
+  }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const url = "https://e-notebook-fu9z.onrender.com/api/auth/login";
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(credentials),
-        });
-        const json = await response.json();
-
-        if (json.success) {
-            localStorage.setItem('token', json.authToken);
-            navigate("/");
-            props.showAlert("Logged in successfully", "Success");
-        } else {
-            props.showAlert("Invalid Credentials", "Danger");
-        }
-    }
-
-    return (
-        <div className="login-page">
-            <div className="login-container">
-                <h2>Login to continue to iNotebook</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            id="email"
-                            name="email"
-                            value={credentials.email}
-                            onChange={onChange}
-                            aria-describedby="emailHelp"
-                        />
-                        <div id="emailHelp" className="form-text">
-                            We'll never share your email with anyone else.
-                        </div>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password</label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            id="password"
-                            name="password"
-                            value={credentials.password}
-                            onChange={onChange}
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                </form>
+  return (
+    <div className="login-container">
+      <div className="login-left">
+        <div className="notebook-preview">
+          <div className="notebook-header">
+            <h1>E-Notebook</h1>
+            <p>Your Digital Knowledge Hub</p>
+          </div>
+          <div className="notebook-content">
+            <div className="note">
+              <h3>Key Features</h3>
+              <ul>
+                <li>Secure Cloud Storage</li>
+                <li>Real-Time Syncing</li>
+                <li>Advanced Search</li>
+                <li>Mobile Optimization</li>
+              </ul>
             </div>
-            <Footer />
+          </div>
         </div>
-    );
+      </div>
+
+      <div className="login-card">
+        <div className="brand-header">
+          <span className="logo">📘</span>
+          <h2>Welcome Back</h2>
+        </div>
+        <p className="subtext">Access your digital brain</p>
+        
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+              placeholder="name@gmail.com"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                value={credentials.password}
+                onChange={onChange}
+                placeholder="••••••••"
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? 
+                  <EyeSlashIcon className="eye-icon" /> : 
+                  <EyeIcon className="eye-icon" />}
+              </button>
+            </div>
+          </div>
+          <button type="submit" className="login-btn">
+            Continue
+            <span className="arrow">→</span>
+          </button>
+        </form>
+
+        <div className="login-footer">
+          <p>New to E-Notebook? <Link to="/signup">Create account</Link></p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Login;

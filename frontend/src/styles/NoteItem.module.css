@@ -1,57 +1,62 @@
-/* NoteItem.module.css */
 .card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-body {
-    padding: 1rem;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    color: #343a40;
-    margin: 0;
-    flex-grow: 1;
-  }
-  
-  .card-text {
-    font-size: 1rem;
-    color: #555555;
-    margin-top: 0.5rem;
-  }
-  
-  .icons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .icons i {
-    font-size: 1.2rem;
-    color: #007bff;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  
-  .icons i:hover {
-    color: #0056b3;
-  }
-  
-  .icons .mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-  
-  /* Ensure no unwanted overflow */
-  .col-md-3 {
-    padding: 0.5rem;
-  }
-  
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: #343a40;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.card-title strong {
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555555;
+  margin-top: 0.5rem;
+}
+
+.card-text strong {
+  font-weight: bold;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons i {
+  font-size: 1.2rem;
+  color: #007bff;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icons i:hover {
+  color: #0056b3;
+}
+
+.icons .mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.col-md-3 {
+  padding: 0.5rem;
+}

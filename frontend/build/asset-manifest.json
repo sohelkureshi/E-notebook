@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.bd34b080.css",
-    "main.js": "/static/js/main.c259f866.js",
-    "static/media/jess-bailey-K47Tk9IEQPQ-unsplash.jpg": "/static/media/jess-bailey-K47Tk9IEQPQ-unsplash.10e0d2384b09f5601db8.jpg",
+    "main.css": "/static/css/main.0b621c17.css",
+    "main.js": "/static/js/main.3e60420f.js",
     "index.html": "/index.html",
-    "main.bd34b080.css.map": "/static/css/main.bd34b080.css.map",
-    "main.c259f866.js.map": "/static/js/main.c259f866.js.map"
+    "main.0b621c17.css.map": "/static/css/main.0b621c17.css.map",
+    "main.3e60420f.js.map": "/static/js/main.3e60420f.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd34b080.css",
-    "static/js/main.c259f866.js"
+    "static/css/main.0b621c17.css",
+    "static/js/main.3e60420f.js"
   ]
 }

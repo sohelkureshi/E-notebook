@@ -1,46 +1,149 @@
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+/* AddNote.module.css */
+.containerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3498db, #dda9f4);
     padding: 2rem;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #007bff;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
-.form-label {
+.headerIcon {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.decorativeLine {
+    width: 60px;
+    height: 3px;
+    background: #3498db;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.formGroup {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.formLabel {
+    display: flex;
+    align-items: center;
     font-weight: 500;
-    color: #333;
+    color: #34495e;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
 }
 
-.form-control {
-    border-radius: 5px;
-    padding: 0.5rem;
+.inputIcon {
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+    color: #7f8c8d;
 }
 
-.mb-3 {
-    margin-bottom: 1.5rem;
+.formControl {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    position: relative;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+.formControl:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    background: #ffffff;
 }
 
-.btn-primary:disabled {
-    background-color: #cce5ff;
-    border-color: #cce5ff;
+.formControl::placeholder {
+    color: #95a5a6;
 }
 
-.btn-primary:hover:not(:disabled) {
-    background-color: #0056b3;
-    border-color: #0056b3;
+.focusBorder {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: width 0.3s ease;
+}
+
+.formControl:focus ~ .focusBorder {
+    width: 100%;
+}
+
+.btnPrimary {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.btnPrimary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btnPrimary:disabled {
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btnIcon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .containerWrapper {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .h2 {
+        font-size: 1.75rem;
+    }
 }

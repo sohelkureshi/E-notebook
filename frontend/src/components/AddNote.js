@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { FiBook, FiEdit, FiTag, FiSave } from 'react-icons/fi';
 import noteContext from '../context/notes/noteContext';
 import styles from '../styles/AddNote.module.css';
 
@@ -20,23 +21,81 @@ const AddNote = (props) => {
     };
 
     return (
-        <div className={`container my-3 ${styles.container}`}>
-            <h2 className={styles.h2}>Add a note</h2>
-            <form className={`my-3 ${styles.form}`}>
-                <div className={`mb-3 ${styles.mb3}`}>
-                    <label htmlFor="title" className={`form-label ${styles.formLabel}`}>Title</label>
-                    <input type="text" className={`form-control ${styles.formControl}`} id="title" name='title' value={note.title} minLength={3} required aria-describedby="emailHelp" onChange={onChange} />
+        <div className={styles.containerWrapper}>
+            <div className={`container ${styles.container}`}>
+                <div className={styles.header}>
+                    <FiEdit className={styles.headerIcon} />
+                    <h2 className={styles.h2}>Create New Note</h2>
+                    <div className={styles.decorativeLine}></div>
                 </div>
-                <div className={`mb-3 ${styles.mb3}`}>
-                    <label htmlFor="description" className={`form-label ${styles.formLabel}`}>Description</label>
-                    <input type="text" className={`form-control ${styles.formControl}`} id="description" name='description' value={note.description} minLength={5} required onChange={onChange} />
-                </div>
-                <div className={`mb-3 ${styles.mb3}`}>
-                    <label htmlFor="tag" className={`form-label ${styles.formLabel}`}>Tag</label>
-                    <input type="text" className={`form-control ${styles.formControl}`} id="tag" name='tag' value={note.tag} onChange={onChange} />
-                </div>
-                <button type="submit" disabled={note.title.length < 3 || note.description.length < 5} className={`btn btn-primary ${styles.btnPrimary}`} onClick={handleAddNote}>Submit</button>
-            </form>
+                
+                <form className={styles.form}>
+                    <div className={styles.formGroup}>
+                        <label htmlFor="title" className={styles.formLabel}>
+                            <FiBook className={styles.inputIcon} />
+                            Title
+                        </label>
+                        <input 
+                            type="text" 
+                            className={styles.formControl} 
+                            id="title" 
+                            name='title' 
+                            value={note.title} 
+                            minLength={3} 
+                            required 
+                            onChange={onChange} 
+                            placeholder="Enter note title"
+                        />
+                        <span className={styles.focusBorder}></span>
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="description" className={styles.formLabel}>
+                            <FiEdit className={styles.inputIcon} />
+                            Description
+                        </label>
+                        <input 
+                            type="text" 
+                            className={styles.formControl} 
+                            id="description" 
+                            name='description' 
+                            value={note.description} 
+                            minLength={5} 
+                            required 
+                            onChange={onChange} 
+                            placeholder="Write your note content"
+                        />
+                        <span className={styles.focusBorder}></span>
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="tag" className={styles.formLabel}>
+                            <FiTag className={styles.inputIcon} />
+                            Tag
+                        </label>
+                        <input 
+                            type="text" 
+                            className={styles.formControl} 
+                            id="tag" 
+                            name='tag' 
+                            value={note.tag} 
+                            onChange={onChange} 
+                            placeholder="Add relevant tags"
+                        />
+                        <span className={styles.focusBorder}></span>
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        disabled={note.title.length < 3 || note.description.length < 5} 
+                        className={styles.btnPrimary} 
+                        onClick={handleAddNote}
+                    >
+                        <FiSave className={styles.btnIcon} />
+                        Save Note
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

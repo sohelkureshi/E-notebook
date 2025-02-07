@@ -12,11 +12,12 @@ const NoteItem = (props) => {
       <div className={`card my-3 ${styles.card}`}>
         <div className={`card-body ${styles['card-body']}`}>
           <div className={`d-flex align-items-center ${styles.icons}`}>
-            <h5 className={`card-title ${styles['card-title']}`}>{note.title}</h5>
+            <h5 className={`card-title ${styles['card-title']}`}><strong>Title:</strong> {note.title}</h5>
             <i className={`fa-solid fa-pen-to-square mx-2 ${styles.icon}`} onClick={() => { updateNote(note) }}></i>
             <i className={`fa-solid fa-trash mx-2 ${styles.icon}`} onClick={() => { deleteNote(note._id); props.showAlert("Note deleted successfully", "Success") }}></i>
           </div>
-          <p className={`card-text ${styles['card-text']}`}>{note.description}</p>
+          <p className={`card-text ${styles['card-text']}`}><strong>Description:</strong> {note.description}</p>
+          <p className={`card-text ${styles['card-text']}`}><strong>Tag:</strong> {note.tag}</p>
         </div>
       </div>
     </div>

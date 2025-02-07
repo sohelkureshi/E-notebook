@@ -1,9 +1,9 @@
 import './App.css';
 import {
   BrowserRouter as Router,
-  Routes, // Switch,
+  Routes,
   Route,
-  // Link,
+  Navigate
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -12,8 +12,13 @@ import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import { useEffect, useState } from 'react';
+import Footer from './components/Footer';
+import { useState } from 'react';
 
+const PrivateRoute = ({ children }) => {
+  const token = sessionStorage.getItem('token');
+  return token ? children : <Navigate to="/signup" />;
+};
 
 function App() {
   const [alert, setAlert] = useState(null)
@@ -22,47 +27,49 @@ function App() {
     setAlert({
       msg: message,
       type: type
-    })
+    });
     setTimeout(() => {
-      setAlert(null)
+      setAlert(null);
     }, 1500);
   }
 
- /* const [backendStatus, setBackendStatus] = useState('Checking...');
+  return (
+    <>
+      <NoteState>
+        <Router>
+          <Navbar showAlert={showAlert} />
+          <Alert alertMsg={alert} />
+          <div className="container">
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/signup" element={<Signup showAlert={showAlert} />} />
+              <Route path="/login" element={<Login showAlert={showAlert} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/" element={<Signup showAlert={showAlert} />} />
 
-  const checkBackendStatus = async () => {
-    const url = process.env.REACT_APP_BACKEND_HOSTING_DOMAIN;
-    try {
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      const json = await response.json();
-      // console.log(json);
-      if (json.status) {
-        setBackendStatus('Backend is live: ' + json.message);
-      } else {
-        setBackendStatus('Backend is not running');
-      }
-    } catch (error) {
-      setBackendStatus('Backend is not running');
-    }
-  };
+              {/* Protected Route for the Notes page */}
+              <Route path="/home" element={
+                <PrivateRoute>
+                  <Home showAlert={showAlert} />
+                </PrivateRoute>
+              } />
+            </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </NoteState>
+    </>
+  );
+}
 
-  useEffect(() => {
-    checkBackendStatus();
-  }, []);
-*/
-
+export default App;
 
 
 
 // const [backendStatus, setBackendStatus] = useState('Checking...');
 
 // const checkBackendStatus = async () => {
-//   const url = 'https://e-notebook-fu9z.onrender.com'; // Update this to your backend URL
+//   const url = 'http://localhost:5000'; // Update this to your backend URL
 //   try {
 //     const response = await fetch(url, {
 //       method: 'GET',
@@ -71,14 +78,13 @@ function App() {
 //       }
 //     });
 //     const json = await response.json();
-//     console.log('Backend response:', json); // Log the full response to debug
-//     if (json.status === true) { // Ensure 'true' is strictly checked
+//     // console.log(json);
+//     if (json.status) {
 //       setBackendStatus('Backend is live: ' + json.message);
 //     } else {
 //       setBackendStatus('Backend is not running');
 //     }
 //   } catch (error) {
-//     console.error('Error:', error);
 //     setBackendStatus('Backend is not running');
 //   }
 // };
@@ -89,51 +95,4 @@ function App() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////
-  return (
-    <>
-      <NoteState>
-        <Router>
-          <Navbar showAlert={showAlert} />
-          <Alert alertMsg={alert} />
-          <div className='container'>
-            <Routes>{/* <Switch> */}
-              <Route exact path="/" element={<Home showAlert={showAlert} />} />
-              <Route exact path="/about" element={<About />} />
-              <Route exact path="/login" element={<Login showAlert={showAlert} />} />
-              <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
-            </Routes>{/* </Switch> */}
-          </div>
-          {/* <div className="container text-muted my-5"><div className="container">{backendStatus}</div></div> */}
-        </Router>
-      </NoteState>
-    </>
-  );
-}
-
-export default App;
+{/* <div className="container text-muted my-5"><div className="container">{backendStatus}</div></div> */}

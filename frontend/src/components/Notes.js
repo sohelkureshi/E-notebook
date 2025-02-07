@@ -12,7 +12,7 @@ const Notes = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (localStorage.getItem('token')) {
+        if (sessionStorage.getItem('token')) {
             getNotes();
             getUser();
         }
@@ -24,11 +24,11 @@ const Notes = (props) => {
     }, [])
 
     const getUser = async () => {
-        const response = await fetch( "https://e-notebook-fu9z.onrender.com" + '/api/auth/getuser', {
+        const response = await fetch( "http://localhost:5000" + '/api/auth/getuser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token')
             }
         });
         const json = await response.json();
@@ -99,14 +99,23 @@ const Notes = (props) => {
             </div>
 
             <div className={`container row my-3 ${styles.row}`}>
-                <h1 className={styles['notes-header']}>Your notes</h1>
+            <h1 className={styles['notes-header']}>Your notes</h1>
+            {notes.length === 0 ? (
                 <div className={`container mx-1 ${styles['no-notes']}`}>
-                    {notes.length === 0 && 'No notes to display'}
+                    No notes to display
                 </div>
-                {notes.map((note) => {
-                    return <NoteItem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
-                })}
-            </div>
+            ) : (
+                notes.map((note) => (
+                    <NoteItem 
+                        key={note._id} 
+                        note={note} 
+                        updateNote={updateNote} 
+                        showAlert={props.showAlert} 
+                    />
+                ))
+            )}
+        </div>
+
         </>
     )
 }

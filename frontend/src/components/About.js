@@ -3,35 +3,61 @@ import '../styles/about.css';
 
 const About = () => {
   return (
-    <div id="specific-page" className="container">
-      <h1>About eNotebook</h1>
-      <p><strong>Welcome to eNotebook!</strong></p>
-      <p>eNotebook is your ultimate solution for securing and managing your notes in the cloud. Built with the powerful combination of React.js, Express.js, and MongoDB, eNotebook offers a seamless and robust note-taking experience designed to cater to all your personal and professional needs.</p>
+    <div className="about-container">
+      <div className="about-header">
+        <h1>About eNotebook</h1>
+        <p className="tagline">Your Digital Brain, Unleashed</p>
+      </div>
+      
+      <div className="about-content">
+        <section className="about-section">
+          <h2>Welcome to eNotebook</h2>
+          <p>eNotebook is your ultimate cloud-based note management solution. Powered by React.js, Express.js, and MongoDB, we offer a seamless and secure note-taking experience for all your needs.</p>
+        </section>
 
-      <h4>Our Mission</h4>
-      <p>At eNotebook, our mission is to provide a secure, efficient, and user-friendly platform for managing your notes. We understand the importance of having quick access to your thoughts, ideas, and important information, and we strive to ensure that your notes are always accessible and protected.</p>
+        <section className="about-section">
+          <h2>Our Mission</h2>
+          <p>To provide a secure, efficient, and user-friendly platform that empowers you to capture, organize, and access your thoughts and ideas from anywhere, at any time.</p>
+        </section>
 
-      <h4>Key Features</h4>
-      <ul>
-        <li><strong>Secure Cloud Storage:</strong> Your notes are securely stored in the cloud, ensuring that you can access them from anywhere at any time without worrying about data loss.</li>
-        <li><strong>Real-Time Syncing:</strong> Our real-time syncing feature keeps your notes updated across all your devices.</li>
-        <li><strong>User-Friendly Interface:</strong> With a clean and intuitive interface, eNotebook makes note-taking a breeze, allowing you to focus on what’s important.</li>
-        <li><strong>Advanced Search Functionality:</strong> Quickly find the notes you need with our powerful search functionality.</li>
-        <li><strong>Organized Note Management:</strong> Categorize and organize your notes with ease, using tags and folders.</li>
-      </ul>
+        <section className="about-section features">
+          <h2>Key Features</h2>
+          <ul>
+            <li><span className="feature-icon">🔒</span> <strong>Secure Cloud Storage</strong></li>
+            <li><span className="feature-icon">🔄</span> <strong>Real-Time Syncing</strong></li>
+            <li><span className="feature-icon">🎨</span> <strong>Intuitive Interface</strong></li>
+            <li><span className="feature-icon">🔍</span> <strong>Advanced Search</strong></li>
+            <li><span className="feature-icon">📂</span> <strong>Smart Organization</strong></li>
+          </ul>
+        </section>
 
-      <h4>Why Choose eNotebook?</h4>
-      <ul>
-        <li><strong>Security First:</strong> We prioritize the security of your data with advanced encryption and secure authentication mechanisms.</li>
-        <li><strong>Reliability:</strong> Built on a strong technology stack, eNotebook is reliable and capable of handling large volumes of notes without compromising performance.</li>
-        <li><strong>Ease of Use:</strong> Whether you're a student, professional, or someone who loves taking notes, our platform is designed to be intuitive and easy to use.</li>
-      </ul>
+        <section className="about-section">
+          <h2>Why Choose eNotebook?</h2>
+          <div className="why-choose">
+            <div className="reason">
+              <span className="reason-icon">🛡️</span>
+              <h3>Security First</h3>
+              <p>Advanced encryption and secure authentication to protect your data.</p>
+            </div>
+            <div className="reason">
+              <span className="reason-icon">⚡</span>
+              <h3>Reliability</h3>
+              <p>Built on a robust tech stack for uncompromised performance.</p>
+            </div>
+            <div className="reason">
+              <span className="reason-icon">🚀</span>
+              <h3>Ease of Use</h3>
+              <p>Intuitive design for students, professionals, and note enthusiasts alike.</p>
+            </div>
+          </div>
+        </section>
 
-      <h4>Get Started Today!</h4>
-      <p>Join the eNotebook community and experience the convenience of having your notes secured in the cloud. Sign up now and take the first step towards a more organized and efficient way of managing your notes.</p>
-
-      <p><strong>Happy Note-Taking!</strong></p>
-      <p>The eNotebook Team</p>
+        <section className="about-section cta">
+          <h2>Ready to Get Started?</h2>
+          <p>Join the eNotebook community and revolutionize your note-taking experience.</p>
+          <a href="/signup" className="cta-button">Sign Up Now</a>
+        </section>
+      </div>
     </div>
   );
 }

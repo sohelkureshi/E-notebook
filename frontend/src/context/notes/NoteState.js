@@ -3,7 +3,7 @@ import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
    // const host = process.env.REACT_APP_BACKEND_HOSTING_DOMAIN;
-    const host = "https://e-notebook-fu9z.onrender.com"
+    const host = "http://localhost:5000"
 
     const initialNotes = []
 
@@ -16,7 +16,7 @@ const NoteState = (props) => {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token')
             }
         });
 
@@ -32,7 +32,7 @@ const NoteState = (props) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token')
             },
             body: JSON.stringify({ title, description, tag })
         });
@@ -48,7 +48,7 @@ const NoteState = (props) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token')
             }
         });
 
@@ -67,7 +67,7 @@ const NoteState = (props) => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'auth-token': localStorage.getItem('token')
+                'auth-token': sessionStorage.getItem('token')
             },
             body: JSON.stringify({ title, description, tag })
         });
