@@ -24,7 +24,7 @@ const Signup = (props) => {
       return;
     }
 
-    const url = `${process.env.REACT_APP_API_BASE_URL}/api/auth/createuser`;
+    const url = "https://e-notebook-fu9z.onrender.com/api/auth/createuser";
     try {
       const response = await fetch(url, {
         method: 'POST',

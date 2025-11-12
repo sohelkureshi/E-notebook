@@ -53,15 +53,21 @@ const express = require('express');
 const cors = require('cors');
 const connectToMongo = require('./db');
 
-connectToMongo();
+const cors = require('cors');
+const path = require("path");
+const corsOptions = {
+  origin: process.env.CLIENT_URL || "https://e-notebook-fu9z.onrender.com/",
+  credentials: true
+};
 
+connectToMongo();
 const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const path = require("path");
+// CORS configuration for Render deployment (or adjust for your needs)
 
 // Serve frontend build
 app.use(express.static(path.join(__dirname, "../frontend/build")));
