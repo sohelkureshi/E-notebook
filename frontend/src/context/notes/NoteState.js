@@ -93,7 +93,7 @@ export default NoteState;
 
 // Gemini AI Summarization API Call
 export async function summarizeNote({ noteId, save = false }) {
-  const host = "http://localhost:5000"; // ensure consistent backend host
+  const host = "https://e-notebook-fu9z.onrender.com"; // ensure consistent backend host
   const res = await fetch(`${host}/api/ai/summarize`, {
     method: "POST",
     headers: {
