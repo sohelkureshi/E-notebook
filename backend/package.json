@@ -1,7 +1,7 @@
 {
   "name": "e-notebook-backend",
   "version": "1.0.0",
-  "description": "E-Notebook Backend — Express + MongoDB + Gemini AI",
+  "description": "E-Notebook Backend — Express + MongoDB + Gemini AI Integration",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
