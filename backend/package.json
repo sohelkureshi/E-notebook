@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "echo 'Nothing to build for backend' && exit 0"
+     "build": "cd ../frontend && npm install && npm run build || echo 'Frontend build failed (ignore if already built)'"
   },
   "engines": {
     "node": "20.x"
