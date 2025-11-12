@@ -48,42 +48,44 @@
 //     console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
 // });
 //---------------------------------------
+// Load environment variables
 require("dotenv").config();
-const express = require('express');
-const cors = require('cors');
-const connectToMongo = require('./db');
 
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 const path = require("path");
-const corsOptions = {
-  origin: process.env.CLIENT_URL || "https://e-notebook-fu9z.onrender.com/",
-  credentials: true
-};
+const connectToMongo = require("./db");
 
+// Connect to MongoDB
 connectToMongo();
+
+// Initialize Express app
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+// CORS configuration for local + Render deployment
+const corsOptions = {
+  origin: process.env.CLIENT_URL || "https://e-notebook-fu9z.onrender.com",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
-// CORS configuration for Render deployment (or adjust for your needs)
+// API routes
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/notes", require("./routes/notes"));
+app.use("/api/ai", require("./routes/ai"));
 
-// Serve frontend build
+// Serve React frontend (for production)
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
-// Catch-all route for React Router
+// Catch-all route (handles React Router)
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
 });
 
-// Available routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
-
-const aiRoutes = require('./routes/ai');
-app.use("/api/ai", aiRoutes);
-
+// Start server
 app.listen(port, () => {
-    console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
+  console.log(`E-Notebook backend running on port ${port}`);
 });
