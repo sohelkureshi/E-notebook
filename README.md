@@ -1,6 +1,6 @@
 # 📔 E-notebook - Digital Notes Management System
 
-A comprehensive full-stack notes management application built with the MERN stack, featuring secure user authentication, real-time note operations, and a modern responsive interface.
+A comprehensive full-stack notes management application built with the MERN stack, featuring secure user authentication, summarize notes using gemeni AI, and a modern responsive interface.
 
 🌐 **Live Demo**: [e-notebook-fu9z.onrender.com](https://e-notebook-fu9z.onrender.com/)
 
