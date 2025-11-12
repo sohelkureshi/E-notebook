@@ -2,15 +2,14 @@ import { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
-  // const host = process.env.REACT_APP_BACKEND_HOSTING_DOMAIN;
-  const host = "https://e-notebook-fu9z.onrender.com"
+  // const host = "https://e-notebook-fu9z.onrender.com"
 
   const initialNotes = [];
   const [notes, setNotes] = useState(initialNotes);
 
   // Get all notes
   const getNotes = async () => {
-    const url = `${host}/api/notes/fetchallnotes`;
+    const url = `https://e-notebook-fu9z.onrender.com/api/notes/fetchallnotes`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -24,7 +23,7 @@ const NoteState = (props) => {
 
   // Add a note
   const addNote = async (title, description, tag) => {
-    const url = `${host}/api/notes/addnote`;
+    const url = `https://e-notebook-fu9z.onrender.com/api/notes/addnote`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -40,7 +39,7 @@ const NoteState = (props) => {
 
   // Delete a note
   const deleteNote = async (id) => {
-    const url = `${host}/api/notes/deletenote/${id}`;
+    const url = `https://e-notebook-fu9z.onrender.com/api/notes/deletenote/${id}`;
     const response = await fetch(url, {
       method: 'DELETE',
       headers: {
@@ -57,7 +56,7 @@ const NoteState = (props) => {
 
   // Edit a note
   const editNote = async (id, title, description, tag) => {
-    const url = `${host}/api/notes/updatenote/${id}`;
+    const url = `https://e-notebook-fu9z.onrender.com/api/notes/updatenote/${id}`;
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
@@ -93,8 +92,8 @@ export default NoteState;
 
 // Gemini AI Summarization API Call
 export async function summarizeNote({ noteId, save = false }) {
-  const host = "https://e-notebook-fu9z.onrender.com"; // ensure consistent backend host
-  const res = await fetch(`${host}/api/ai/summarize`, {
+  // const host = "https://e-notebook-fu9z.onrender.com"; 
+  const res = await fetch(`https://e-notebook-fu9z.onrender.com/api/ai/summarize`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
