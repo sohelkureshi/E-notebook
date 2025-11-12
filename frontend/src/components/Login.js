@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/login.css';
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 const Login = (props) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -10,59 +9,59 @@ const Login = (props) => {
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const url = "https://e-notebook-fu9z.onrender.com/api/auth/login";
+    const url = "http://localhost:5000/api/auth/login";
     const response = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(credentials),
     });
+
     const json = await response.json();
 
     if (json.success) {
-      // Store token in sessionStorage so it won’t persist after closing the tab
       sessionStorage.setItem('token', json.authToken);
-      // Navigate to the notes page (rendered by Home.js at route '/home')
       navigate("/home");
       props.showAlert("Logged in successfully", "success");
     } else {
       props.showAlert("Invalid Credentials", "danger");
     }
-  }
+  };
 
   return (
     <div className="login-container">
+      {/* ===== Left Side Preview ===== */}
       <div className="login-left">
         <div className="notebook-preview">
           <div className="notebook-header">
             <h1>E-Notebook</h1>
-            <p>Your Digital Knowledge Hub</p>
+            <p>Your Smart Note Management App</p>
           </div>
           <div className="notebook-content">
             <div className="note">
               <h3>Key Features</h3>
               <ul>
-                <li>Secure Cloud Storage</li>
-                <li>Real-Time Syncing</li>
-                <li>Advanced Search</li>
-                <li>Mobile Optimization</li>
+                <li><strong>Authentication for Security</strong></li>
+                <li><strong>CRUD Operations on Notes</strong></li>
+                <li><strong>AI Summarization</strong></li>
+                <li><strong>Clean and Aesthetic UI</strong></li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
+      {/* ===== Right Side Login Card ===== */}
       <div className="login-card">
         <div className="brand-header">
-          <span className="logo">📘</span>
           <h2>Welcome Back</h2>
         </div>
-        <p className="subtext">Access your digital brain</p>
-        
+        <p className="subtext">Login to continue managing your notes</p>
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -75,29 +74,26 @@ const Login = (props) => {
               required
             />
           </div>
+
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <div className="password-input">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={credentials.password}
-                onChange={onChange}
-                placeholder="••••••••"
-                required
-              />
-              <button
-                type="button"
-                className="password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? 
-                  <EyeSlashIcon className="eye-icon" /> : 
-                  <EyeIcon className="eye-icon" />}
-              </button>
-            </div>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={credentials.password}
+              onChange={onChange}
+              placeholder="Enter your password"
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </div>
+
           <button type="submit" className="login-btn">
             Continue
             <span className="arrow">→</span>
@@ -105,11 +101,11 @@ const Login = (props) => {
         </form>
 
         <div className="login-footer">
-          <p>New to E-Notebook? <Link to="/signup">Create account</Link></p>
+          <p>New to E-Notebook? <Link to="/signup">Create an account</Link></p>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Login;

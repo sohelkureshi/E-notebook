@@ -19,7 +19,6 @@ const Navbar = (props) => {
       <div className="container-fluid">
         {/* Brand link changes destination based on login status */}
         <Link className="navbar-brand" to={token ? "/notes" : "/signup"}>
-          <span className="brand-icon">📝</span>
           E-Notebook
         </Link>
         <button
@@ -72,7 +71,7 @@ const Navbar = (props) => {
             <li className="nav-item">
               <Link
                 className="nav-link source-code"
-                to="https://github.com/sohelkureshi/eNotebook"
+                to="https://github.com/sohelkureshi/E-notebook"
                 target="_blank"
                 rel="noopener noreferrer"
               >

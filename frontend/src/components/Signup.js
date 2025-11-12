@@ -24,7 +24,7 @@ const Signup = (props) => {
       return;
     }
 
-    const url = "https://e-notebook-fu9z.onrender.com/api/auth/createuser";
+    const url = "http://localhost:5000/api/auth/createuser";
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -34,9 +34,7 @@ const Signup = (props) => {
       const json = await response.json();
 
       if (json.success) {
-        // Save token in sessionStorage for session-based authentication
         sessionStorage.setItem('token', json.authToken);
-        // Redirect to the notes page (Home.js)
         navigate("/home");
         props.showAlert("Account created successfully", "success");
       } else {
@@ -54,7 +52,7 @@ const Signup = (props) => {
       console.error('Error:', error);
       props.showAlert("Account creation failed", "danger");
     }
-  }
+  };
 
   return (
     <div className="landing-container">
@@ -62,12 +60,15 @@ const Signup = (props) => {
         <section className="hero-section">
           <div className="hero-content">
             <h1>Organize Your Thoughts with <span>E-Notebook</span></h1>
-            <p className="welcome-quote">"Where Ideas Meet Structure - Your Digital Sanctuary for Creativity"</p>
+            <p className="welcome-quote">
+              "Where Ideas Meet Structure — Your Digital Space for Smart Notes"
+            </p>
             <a href="#signup" className="get-started-btn" onClick={handleGetStarted}>
               Get Started
               <span className="hover-effect"></span>
             </a>
           </div>
+
           <div className="hero-visual">
             <div className="floating-notebook">
               <div className="page">
@@ -80,47 +81,56 @@ const Signup = (props) => {
 
         <section className="features-section">
           <div className="section-header">
-            <h2>Why E-Notebook?</h2>
-            <p>Discover the perfect blend of simplicity and power</p>
+            <h2>Why Choose E-Notebook?</h2>
+            <p>Powerful features that make your note-taking smarter and easier</p>
           </div>
+
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">📘</div>
-              <h3>Smart Organization</h3>
-              <p>Automatically categorize notes with AI-powered tagging</p>
+              <h3>Secure Authentication</h3>
+              <p>
+                Your account and notes are fully protected with authentication-based access.
+              </p>
             </div>
+
             <div className="feature-card">
-              <div className="feature-icon">✨</div>
-              <h3>Beautiful Interface</h3>
-              <p>Enjoy writing with our distraction-free, elegant design</p>
+              <h3>Complete Note Management</h3>
+              <p>
+                Create, edit, delete, and organize notes easily with full CRUD operations.
+              </p>
             </div>
+
             <div className="feature-card">
-              <div className="feature-icon">🔒</div>
-              <h3>Bank-Grade Security</h3>
-              <p>Your thoughts are protected with AES-256 encryption</p>
+              <h3>AI-Powered Summarization</h3>
+              <p>
+                Get instant summaries of your notes using Gemini AI for quick insights.
+              </p>
             </div>
           </div>
         </section>
-
         <section className="signup-section" ref={signupRef} id="signup">
           <div className="signup-card">
             <div className="card-header">
               <h2>Start Your Journey</h2>
               <p>Create your free account in seconds</p>
             </div>
+
             <form className="signup-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <input type="text" name="name" value={credentials.name} onChange={onChange} placeholder=" " required minLength={3} />
                 <label>Full Name</label>
               </div>
+
               <div className="form-group">
                 <input type="email" name="email" value={credentials.email} onChange={onChange} placeholder=" " required />
                 <label>Email Address</label>
               </div>
+
               <div className="form-group">
                 <input type="password" name="password" value={credentials.password} onChange={onChange} placeholder=" " required minLength={5} />
                 <label>Password</label>
               </div>
+
               <div className="form-group">
                 <input type="password" name="cpassword" value={credentials.cpassword} onChange={onChange} placeholder=" " required minLength={5} />
                 <label>Confirm Password</label>
@@ -131,6 +141,7 @@ const Signup = (props) => {
                 <span className="arrow">→</span>
               </button>
             </form>
+
             <p className="login-link">
               Already part of our community? <Link to="/login">Login here</Link>
             </p>

@@ -48,67 +48,31 @@
 //     console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
 // });
 //---------------------------------------
-// const connectToMongo = require('./db');
-// const express = require('express');
-// const cors = require('cors');
-
-// connectToMongo();
-
-// const app = express()
-// const port = 5000
-
-// app.use(cors())
-// app.use(express.json()) // to use req.body
-
-// app.get('/', (req, res) => {
-//   res.json({ status: true, message: "iNotebook backend running successfully" })
-// })
-
-// // available routes
-// app.use('/api/auth', require('./routes/auth'))
-// app.use('/api/notes', require('./routes/notes'))
-
-// app.listen(port, () => {
-//   console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`)
-// })
-//------------------------------------
-// Load environment variables from .env file
-require('dotenv').config();
-
-const connectToMongo = require('./db');
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
-
-// CORS configuration for Render deployment (or adjust for your needs)
-const corsOptions = {
-  origin: process.env.CLIENT_URL || "https://e-notebook-fu9z.onrender.com/",
-  credentials: true
-};
+const connectToMongo = require('./db');
 
 connectToMongo();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Use CORS with custom options
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
-// Serve static files from the frontend build folder (one level up from the backend folder)
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+// Default route
+app.get('/', (req, res) => {
+    res.json({ status: true, message: "iNotebook backend running successfully" });
+});
 
-// API routes
+// Available routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/notes', require('./routes/notes'));
 
-// For any route not matching an API endpoint, serve the React app
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
-});
+const aiRoutes = require('./routes/ai');
+app.use("/api/ai", aiRoutes);
 
 app.listen(port, () => {
-  console.log(`iNotebook backend listening on port ${port} at http://localhost:${port} in ${process.env.NODE_ENV} mode`);
+    console.log(`iNotebook backend listening on port ${port} at http://localhost:${port}`);
 });
-
-

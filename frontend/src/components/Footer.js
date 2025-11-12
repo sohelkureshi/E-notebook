@@ -6,11 +6,9 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <p>E-Notebook &copy; 2025 | Your digital brain, unleashed</p>
+        <p>E-Notebook &copy; 2025 | Your digital brain</p>
         <nav>
           <Link to="/about">About</Link>
-          <Link to="/privacy">Privacy</Link>
-          <Link to="/terms">Terms</Link>
         </nav>
       </div>
     </footer>

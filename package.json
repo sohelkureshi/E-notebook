@@ -1,25 +1,20 @@
 {
-  "name": "inotebook-backend",
+  "name": "e-notebook",
   "version": "1.0.0",
-  "description": "iNotebook - Your notebook on the cloud",
+  "description": "- Designed and developed a full (MERN) stack notes-taking application using React, Redux, Node.js, Express, and MongoDB. Implemented user authentication with JSON Web Tokens (JWT) and created features for note creation, editing, deletion, categorization, and searching. Demonstrated proficiency in building a scalable and efficient application with a user-friendly interface.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon backend/index.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "nodemon backend/index.js"
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && nodemon index.js",
+    "frontend": "cd frontend && npm start"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.18.2",
-    "express-validator": "^7.0.1",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.5.1"
-  },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "mongodb": "^6.9.0"
   }
 }
